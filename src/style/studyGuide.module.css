@@ -1,0 +1,195 @@
+.section {
+    position: relative;
+    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.titleHeader {
+    padding: 10px 20px;
+    position: relative;
+}
+
+.titleHeader h4 {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.toggleButton {
+    height: 17px;
+    width: 50px;
+    background-color: #ccc;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.toggleButton.active svg {
+    transition: all .4s ease-in-out;
+    transform: scaleY(-100%)
+}
+
+.guideWrapper {
+    display: flex;
+    padding: 10px 15px;
+    transition: max-height .5s ease-in-out, opacity .5s ease-in-out, padding .5s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.guideWrapper.hide {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0px 15px;
+}
+
+.guideWrapper .leftCol {
+    display: flex;
+    flex: 0 0 220px;
+    gap: 10px;
+}
+
+.blocks {
+    text-align: center;
+    border-radius: 10px;
+    flex: 0 0 auto;
+    height: 110px;
+    width: 90px;
+    background-image: linear-gradient(109.6deg, rgba(45, 116, 213, 1) 11.2%, rgba(121, 137, 212, 1) 91.2%);
+    color: #fff;
+    font-size: 12px;
+}
+
+.blocks img {
+    height: 40px;
+    width: 40px;
+    margin: 20px 0 10px 0;
+}
+
+.guideWrapper .rightCol {
+    width: calc(100% - 220px);
+    position: relative;
+}
+
+.guideWrapper .rightCol::before {
+    content: "";
+    height: 70px;
+    width: 3px;
+    background-color: #b7b7b7;
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slideContainer {
+    border-radius: 10px;
+    background-color: #000;
+    height: 110px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.slideContainer::after {
+    content: "";
+    background: linear-gradient(0deg, #000, transparent 40%);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.cardImg {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: .6;
+    transition: all .3s ease-in-out;
+}
+
+.videoDescription {
+    position: absolute;
+    bottom: 5px;
+    color: #fff;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sourceImage {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.slideContainer:hover .cardImg {
+    transform: scale(1.07);
+}
+
+.navigationWrap {
+    position: absolute;
+    top: 39px;
+    right: 18px;
+    display: flex;
+    gap: 10px;
+    z-index: 1;
+    transition: all .5s ease-in-out;
+}
+
+.navigationWrap.hideNavigation {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.navigationWrap .sliderBtn {
+    background-image: url("data:image/svg+xml,%3Csvg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10.5' cy='10.5' r='10.5' fill='%23D9D9D9'/%3E%3Cpath fillRule='evenodd' clipRule='evenodd' d='M8.1049 14.887C8.07165 14.8513 8.04527 14.8089 8.02727 14.7621C8.00927 14.7154 8 14.6653 8 14.6147C8 14.5642 8.00927 14.5141 8.02727 14.4673C8.04527 14.4206 8.07165 14.3782 8.1049 14.3425L12.1374 9.9999L8.1049 5.65733C8.0717 5.62158 8.04537 5.57913 8.0274 5.53241C8.00943 5.48569 8.00019 5.43562 8.00019 5.38506C8.00019 5.33449 8.00943 5.28442 8.0274 5.2377C8.04537 5.19098 8.0717 5.14854 8.1049 5.11278C8.13809 5.07702 8.1775 5.04866 8.22088 5.02931C8.26425 5.00996 8.31074 5 8.35769 5C8.40464 5 8.45113 5.00996 8.4945 5.02931C8.53787 5.04866 8.57728 5.07702 8.61048 5.11278L12.8951 9.72762C12.9284 9.76335 12.9547 9.80578 12.9727 9.85251C12.9907 9.89923 13 9.94931 13 9.9999C13 10.0505 12.9907 10.1006 12.9727 10.1473C12.9547 10.194 12.9284 10.2365 12.8951 10.2722L8.61048 14.887C8.57732 14.9228 8.53791 14.9512 8.49454 14.9706C8.45116 14.99 8.40465 15 8.35769 15C8.31073 15 8.26422 14.99 8.22084 14.9706C8.17747 14.9512 8.13806 14.9228 8.1049 14.887Z' fill='black'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+
+.navigationWrap .sliderBtn.sliderNextBtn {
+    transform: rotate(-180deg);
+}
+
+@media (max-width:768px) {
+    .blocks {
+        width: 80px;
+    }
+
+    .guideWrapper .leftCol {
+        flex: 0 0 197px;
+    }
+
+    .guideWrapper .rightCol {
+        width: calc(100% - 197px);
+
+    }
+
+    .titleHeader {
+        padding: 10px 20px 40px;
+    }
+}
